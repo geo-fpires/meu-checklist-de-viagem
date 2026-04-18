@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist para Viagem (Nacional)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remover margem padrão do body */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4; /* Cor de fundo suave */
+        }
+        .header-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px; /* Altura da imagem de cabeçalho */
+            background-image: url('https://www.pexels.com/photo/a-person-holding-a-pen-7368308/'); /* Substitua pelo link da sua imagem de cabeçalho */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .airplane-icon {
+            position: absolute;
+            bottom: -30px; /* Ajuste a posição vertical do avião */
+            left: 50px; /* Ajuste a posição horizontal do avião */
+            font-size: 60px; /* Tamanho do ícone do avião */
+            transform: rotate(45deg); /* Rotacionar o avião para dar um efeito */
+            z-index: 1;
+        }
+        .content-wrapper {
+            max-width: 900px; /* Largura máxima do conteúdo */
+            margin: 0 auto; /* Centralizar o conteúdo */
+            padding: 20px;
+            background-color: #fff; /* Fundo branco para o conteúdo */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave */
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em; /* Aumentar o tamanho do título principal */
+            margin-top: 0;
+            padding-top: 20px; /* Espaçamento superior para o título */
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 30px; /* Mais espaço acima dos títulos de seção */
+            margin-bottom: 10px;
+            font-size: 1.8em; /* Aumentar o tamanho dos títulos de seção */
+            border-bottom: 2px solid #eee; /* Linha abaixo do título de seção */
+            padding-bottom: 5px;
+        }
+        .subsection-title {
+            font-weight: bold; /* Deixar o subtítulo em negrito */
+            margin-top: 20px;
+            margin-bottom: 8px;
+            margin-left: 20px;
+            font-size: 1.2em; /* Aumentar o tamanho dos subtítulos */
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2); /* Aumentar um pouco o tamanho do checkbox */
+        }
+        .item {
+            margin-left: 40px;
+        }
+        .sub-item {
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-image-container">
+        <span class="airplane-icon">✈️</span>
+    </div>
+
+    <div class="content-wrapper">
+        <h1>Checklist para Viagem (Nacional)</h1>
+
+        <div class="section-title">1. Antes da viagem (1–7 dias antes)</div>
+        <ul>
+            <li>
+                <div class="subsection-title">1.1 Documentos e reservas</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Conferir validade do RG ou passaporte</label></li>
+                    <li class="item"><label><input type="checkbox"> Carteirinha de vacinação</label></li>
+                    <li class="item"><label><input type="checkbox"> Conferir datas e horários de ida e volta (passagem aérea/rodoviária)</label></li>
+                    <li class="item"><label><input type="checkbox"> Confirmar reserva de hospedagem (hotel, pousada, Airbnb, etc.)</label></li>
+                    <li class="item"><label><input type="checkbox"> Ver regras de bagagem da companhia aérea (peso, dimensões, itens proibidos)</label></li>
+                    <li class="item">Tirar print ou salvar em PDF:
+                        <ul>
+                            <li class="sub-item"><label><input type="checkbox"> Passagens</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Reservas de hospedagem</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Ingressos de passeios/eventos, se houver</label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">1.2 Planejamento básico</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Verificar previsão do tempo para os dias da viagem</label></li>
+                    <li class="item">Pesquisar:
+                        <ul>
+                            <li class="sub-item"><label><input type="checkbox"> Como sair do aeroporto/rodoviária até a hospedagem</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Mercados, farmácias e restaurantes por perto</label></li>
+                        </ul>
+                    </li>
+                    <li class="item"><label><input type="checkbox"> Definir um orçamento diário aproximado (transporte, alimentação, passeios - conferir Checklist de planejamento financeiro para viagem)</label></li>
+                    <li class="item"><label><input type="checkbox"> Baixar mapas offline da cidade (Google Maps ou similar)</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">1.3 Dinheiro</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Definir quanto levar em dinheiro vivo (conferir Checklist de planejamento financeiro para viagem)</label></li>
+                    <li class="item"><label><input type="checkbox"> Conferir cartões (senha, limite, app do banco funcionando)</label></li>
+                    <li class="item"><label><input type="checkbox"> Salvar telefone do banco para bloqueio de cartão, se precisar em caso de roubo ou furto</label></li>
+                    <li class="item"><label><input type="checkbox"> Pagar ou agendar contas que vencem durante a viagem</label></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="section-title">2. Organização digital</div>
+        <ul>
+            <li class="item"><label><input type="checkbox"> Criar uma pasta no celular: “VIAGEM – [NOME DO LUGAR]”</label></li>
+            <li class="item">Salvar na pasta:
+                <ul>
+                    <li class="sub-item"><label><input type="checkbox"> Passagens</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Reservas de hospedagem</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Ingressos de passeios/eventos</label></li>
+                </ul>
+            </li>
+            <li class="item"><label><input type="checkbox"> Fazer backup de fotos/vídeos importantes antes de viajar</label></li>
+            <li class="item"><label><input type="checkbox"> Verificar espaço livre no celular para fotos/vídeos</label></li>
+            <li class="item"><label><input type="checkbox"> Atualizar apps importantes: banco, transporte (Uber/99), cartões, companhia aérea</label></li>
+        </ul>
+
+        <div class="section-title">3. Saúde e remédios</div>
+        <ul>
+            <li class="item"><label><input type="checkbox"> Remédios de uso contínuo (para todos os dias + extra)</label></li>
+            <li class="item"><label><input type="checkbox"> Receita médica (para remédios controlados)</label></li>
+            <li class="item">Mini kit:
+                <ul>
+                    <li class="sub-item"><label><input type="checkbox"> Analgésico/antitérmico</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Remédio para alergia (se necessário)</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Remédio para estômago/intestino</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Band-aids/curativos</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Protetor solar</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Repelente (principalmente praia, interior, cachoeira)</label></li>
+                    <li class="sub-item"><label><input type="checkbox"> Álcool em gel ou lenços umedecidos</label></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="section-title">4. Bagagem</div>
+        <ul>
+            <li>
+                <div class="subsection-title">4.1. Bagagem de mão (mochila/bolsa)</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Documento com foto (RG ou passaporte)</label></li>
+                    <li class="item"><label><input type="checkbox"> Carteirinha de vacinação</label></li>
+                    <li class="item"><label><input type="checkbox"> Carteira com dinheiro e cartões</label></li>
+                    <li class="item"><label><input type="checkbox"> Celular</label></li>
+                    <li class="item"><label><input type="checkbox"> Fones de ouvido</label></li>
+                    <li class="item"><label><input type="checkbox"> Carregador do celular</label></li>
+                    <li class="item"><label><input type="checkbox"> Power bank (só se for necessário mesmo)</label></li>
+                    <li class="item"><label><input type="checkbox"> Passagens (app ou impresso)</label></li>
+                    <li class="item"><label><input type="checkbox"> Chaves de casa e/ou carro</label></li>
+                    <li class="item"><label><input type="checkbox"> Remédios essenciais</label></li>
+                    <li class="item"><label><input type="checkbox"> 1 muda de roupa + roupa íntima + meia</label></li>
+                    <li class="item"><label><input type="checkbox"> Óculos de grau / lentes / óculos de sol</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">4.2. Roupas</div>
+                <ul>
+                    <li class="item">Para uma viagem de 5 dias em média:
+                        <ul>
+                            <li class="sub-item"><label><input type="checkbox"> 5 a 7 camisetas/blusas</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 2 a 3 calças/bermudas</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 5 a 7 cuecas</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 5 a 7 pares de meia</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 1 pijama ou roupa para dormir</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 1 casaco/moletom (mesmo indo para lugar quente por causa do ar-condicionado do ônibus/avião)</label></li>
+                        </ul>
+                    </li>
+                    <li class="item">Roupas específicas:
+                        <ul>
+                            <li class="sub-item"><label><input type="checkbox"> Roupas de banho (sunga ou calção de banho)</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Roupa de academia (se for treinar ou praticar esportes)</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> 1 roupa mais arrumada (jantar/evento)</label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">4.3. Calçados</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> 1 par de tênis confortável para caminhar</label></li>
+                    <li class="item"><label><input type="checkbox"> 1 par de chinelo</label></li>
+                    <li class="item"><label><input type="checkbox"> 1 par de sapato mais arrumado (se precisar para eventos)</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">4.4. Higiene pessoal</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Escova de dentes</label></li>
+                    <li class="item"><label><input type="checkbox"> Pasta de dentes</label></li>
+                    <li class="item"><label><input type="checkbox"> Fio dental</label></li>
+                    <li class="item"><label><input type="checkbox"> Desodorante</label></li>
+                    <li class="item"><label><input type="checkbox"> Shampoo (frasco pequeno, para nécessaire)</label></li>
+                    <li class="item"><label><input type="checkbox"> Condicionador (frasco pequeno, para nécessaire)</label></li>
+                    <li class="item"><label><input type="checkbox"> Sabonete</label></li>
+                    <li class="item"><label><input type="checkbox"> Creme hidratante / de rosto</label></li>
+                    <li class="item"><label><input type="checkbox"> Perfume (frasco pequeno, para nécessaire)</label></li>
+                    <li class="item"><label><input type="checkbox"> Lâmina de barbear / itens de barbearia</label></li>
+                    <li class="item"><label><input type="checkbox"> Produtos de cabelo (gel, pomada, leave-in…)</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">4.5. Eletrônicos</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Carregador de celular</label></li>
+                    <li class="item"><label><input type="checkbox"> Carregador de notebook/tablet</label></li>
+                    <li class="item"><label><input type="checkbox"> Notebook ou tablet</label></li>
+                    <li class="item"><label><input type="checkbox"> Fones de ouvido bluetooth</label></li>
+                    <li class="item"><label><input type="checkbox"> Fones de ouvido com cabo</label></li>
+                    <li class="item"><label><input type="checkbox"> Power bank (só se for necessário)</label></li>
+                    <li class="item"><label><input type="checkbox"> Cabo extra de carregamento (caso o primeiro dê problema)</label></li>
+                    <li class="item"><label><input type="checkbox"> Caixa de som e carregador</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">4.6. Itens extras úteis</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Mochila pequena para passeios</label></li>
+                    <li class="item"><label><input type="checkbox"> Cadeado para a mala (se tiver senha, melhor)</label></li>
+                    <li class="item"><label><input type="checkbox"> Tag de identificação na mala (nome + telefone)</label></li>
+                    <li class="item"><label><input type="checkbox"> Guarda-chuva pequeno ou capa de chuva</label></li>
+                    <li class="item"><label><input type="checkbox"> Garrafa de água reutilizável (preferencialmente térmica)</label></li>
+                    <li class="item"><label><input type="checkbox"> Sacola/saco para roupa suja</label></li>
+                    <li class="item"><label><input type="checkbox"> Caneta</label></li>
+                    <li class="item"><label><input type="checkbox"> Tapete de ioga</label></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="section-title">5. Casa antes de sair</div>
+        <ul>
+            <li>
+                <div class="subsection-title">5.1 Segurança</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Fechar todas as janelas</label></li>
+                    <li class="item"><label><input type="checkbox"> Trancar portas e portões</label></li>
+                    <li class="item"><label><input type="checkbox"> Conferir fogão desligado</label></li>
+                    <li class="item"><label><input type="checkbox"> Fechar registro de gás (se possível)</label></li>
+                    <li class="item"><label><input type="checkbox"> Desligar da tomada o que não precisa ficar ligado (TV, computador, micro-ondas, etc.)</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">5.2 Organização</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Verificar geladeira (jogar fora o que estraga rápido)</label></li>
+                    <li class="item"><label><input type="checkbox"> Esvaziar lixo da cozinha</label></li>
+                    <li class="item"><label><input type="checkbox"> Esvaziar lixo dos banheiros</label></li>
+                    <li class="item"><label><input type="checkbox"> Tirar o lixo orgânico para fora de casa</label></li>
+                </ul>
+            </li>
+            <li>
+                <div class="subsection-title">5.3 Recados</div>
+                <ul>
+                    <li class="item"><label><input type="checkbox"> Avisar alguém de confiança que você vai viajar</label></li>
+                    <li class="item"><label><input type="checkbox"> Informar quantos dias ficará fora</label></li>
+                    <li class="item">Combinar quem vai:
+                        <ul>
+                            <li class="sub-item"><label><input type="checkbox"> Regar plantas</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Alimentar os pets</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Limpar areia dos gatos</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Trocar água dos pets</label></li>
+                            <li class="sub-item"><label><input type="checkbox"> Ver correspondências, se necessário</label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="section-title">6. Check final (na porta de casa)</div>
+        <ul>
+            <li class="item"><label><input type="checkbox"> RG ou passaporte na mão</label></li>
+            <li class="item"><label><input type="checkbox"> Carteira com dinheiro e cartões</label></li>
+            <li class="item"><label><input type="checkbox"> Carteirinha de vacinação</label></li>
+            <li class="item"><label><input type="checkbox"> Celular + carregador</label></li>
+            <li class="item"><label><input type="checkbox"> Chave de casa e/ou carro</label></li>
+            <li class="item"><label><input type="checkbox"> Passagens (app ou impresso)</label></li>
+            <li class="item"><label><input type="checkbox"> Remédios essenciais na mochila</label></li>
+            <li class="item"><label><input type="checkbox"> Portas e janelas trancadas</label></li>
+            <li class="item"><label><input type="checkbox"> Fogão desligado, gás fechado</label></li>
+            <li class="item"><label><input type="checkbox"> Lixo orgânico fora de casa</label></li>
+        </ul>
+    </div>
+</body>
+</html>
