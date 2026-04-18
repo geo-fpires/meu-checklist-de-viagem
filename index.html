@@ -20,6 +20,53 @@
             text-decoration: line-through; /* A propriedade está aqui */
             color: #888;
         }
+        /* ... seu CSS existente ... */
+
+/* Estilos para telas menores (celulares) */
+@media (max-width: 768px) { /* Aplica esses estilos quando a largura da tela for até 768px */
+    .header-image-container {
+        height: 180px; /* Reduz a altura da imagem de cabeçalho para celular */
+    }
+
+    .airplane-icon {
+        bottom: -60px; /* Ajusta a posição vertical do avião */
+        left: 20px; /* Ajusta a posição horizontal do avião */
+        font-size: 70px; /* Reduz o tamanho do ícone do avião */
+    }
+
+    .content-wrapper {
+        max-width: 100%; /* Ocupa a largura total em telas pequenas */
+        padding: 15px; /* Reduz o padding interno */
+        margin: 0 10px; /* Adiciona uma pequena margem lateral para não colar nas bordas */
+    }
+
+    h1 {
+        font-size: 2em; /* Reduz o tamanho do título principal */
+        padding-top: 15px;
+    }
+
+    .section-title {
+        font-size: 1.5em; /* Reduz o tamanho dos títulos de seção */
+        margin-top: 20px;
+    }
+
+    .subsection-title {
+        font-size: 1.1em; /* Reduz o tamanho dos subtítulos */
+        margin-left: 10px; /* Reduz o recuo */
+    }
+
+    .item {
+        margin-left: 20px; /* Reduz o recuo dos itens */
+    }
+
+    .sub-item {
+        margin-left: 40px; /* Reduz o recuo dos sub-itens */
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.0); /* Volta o checkbox ao tamanho normal ou um pouco menor */
+    }
+}
         h1, h2, h3, .section-title, .subsection-title {
             font-family: 'Lora', serif; /* Aplica Lora também aos títulos */
             color: #2c3e50;
