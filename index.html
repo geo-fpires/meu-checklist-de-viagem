@@ -16,6 +16,10 @@
             color: #333;
             background-color: #f4f4f4;
         }
+        .checked-item {
+            text-decoration: line-through; /* A propriedade está aqui */
+            color: #888;
+        }
         h1, h2, h3, .section-title, .subsection-title {
             font-family: 'Lora', serif; /* Aplica Lora também aos títulos */
             color: #2c3e50;
@@ -110,7 +114,7 @@
                     <li class="item"><label><input type="checkbox" id="regras-de-bagagem"> Ver regras de bagagem da companhia aérea (peso, dimensões, itens proibidos)</label></li>
                     <li class="item">Tirar print ou salvar em PDF:
                         <ul>
-                            <li class="sub-item"><label><input type="checkbox" id="passagens"> Passagens</label></li>
+                            <li class="sub-item"><label><input type="checkbox" id="passagens-doc"> Passagens</label></li>
                             <li class="sub-item"><label><input type="checkbox" id="reservas"> Reservas de hospedagem</label></li>
                             <li class="sub-item"><label><input type="checkbox" id="ingressos"> Ingressos de passeios/eventos, se houver</label></li>
                         </ul>
@@ -147,29 +151,29 @@
             <li class="item"><label><input type="checkbox"> Criar uma pasta no celular: “VIAGEM – [NOME DO LUGAR]”</label></li>
             <li class="item">Salvar na pasta:
                 <ul>
-                    <li class="sub-item"><label><input type="checkbox"> Passagens</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Reservas de hospedagem</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Ingressos de passeios/eventos</label></li>
+                    <li class="sub-item"><label><input type="checkbox" id="passagens-digital"> Passagens</label></li>
+                    <li class="sub-item"><label><input type="checkbox" id="reserva-de-hospedagem"> Reservas de hospedagem</label></li>
+                    <li class="sub-item"><label><input type="checkbox" id="ingressos-de-passeios"> Ingressos de passeios/eventos</label></li>
                 </ul>
             </li>
-            <li class="item"><label><input type="checkbox"> Fazer backup de fotos/vídeos importantes antes de viajar</label></li>
-            <li class="item"><label><input type="checkbox"> Verificar espaço livre no celular para fotos/vídeos</label></li>
-            <li class="item"><label><input type="checkbox"> Atualizar apps importantes: banco, transporte (Uber/99), cartões, companhia aérea</label></li>
+            <li class="item"><label><input type="checkbox" id="backup"> Fazer backup de fotos/vídeos importantes antes de viajar</label></li>
+            <li class="item"><label><input type="checkbox" id="liberar-espaco"> Verificar espaço livre no celular para fotos/vídeos</label></li>
+            <li class="item"><label><input type="checkbox" id="atualizar-apps"> Atualizar apps importantes: banco, transporte (Uber/99), cartões, companhia aérea</label></li>
         </ul>
 
         <div class="section-title">3. Saúde e remédios</div>
         <ul>
-            <li class="item"><label><input type="checkbox"> Remédios de uso contínuo (para todos os dias + extra)</label></li>
-            <li class="item"><label><input type="checkbox"> Receita médica (para remédios controlados)</label></li>
+            <li class="item"><label><input type="checkbox" id="remedios-de-uso-continuo"> Remédios de uso contínuo (para todos os dias + extra)</label></li>
+            <li class="item"><label><input type="checkbox" id="receita-medica"> Receita médica (para remédios controlados)</label></li>
             <li class="item">Mini kit:
                 <ul>
-                    <li class="sub-item"><label><input type="checkbox"> Analgésico/antitérmico</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Remédio para alergia (se necessário)</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Remédio para estômago/intestino</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Band-aids/curativos</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Protetor solar</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Repelente (principalmente praia, interior, cachoeira)</label></li>
-                    <li class="sub-item"><label><input type="checkbox"> Álcool em gel ou lenços umedecidos</label></li>
+                    <li class="sub-item"><label><input type="checkbox" id="analgesicos"> Analgésico/antitérmico</label></li>
+                    <li class="sub-item"><label><input type="checkbox"remedio-para-alergia"> Remédio para alergia (se necessário)</label></li>
+                    <li class="sub-item"><label><input type="checkbox"remedio-para-estomago"> Remédio para estômago/intestino</label></li>
+                    <li class="sub-item"><label><input type="checkbox"band-aid"> Band-aids/curativos</label></li>
+                    <li class="sub-item"><label><input type="checkbox"protetor-solar"> Protetor solar</label></li>
+                    <li class="sub-item"><label><input type="checkbox"repelente"> Repelente (principalmente praia, interior, cachoeira)</label></li>
+                    <li class="sub-item"><label><input type="checkbox"alcool-em-gel"> Álcool em gel ou lenços umedecidos</label></li>
                 </ul>
             </li>
         </ul>
