@@ -90,7 +90,7 @@
         }
     </style>
 </head>
-<body>
+<body id="checklist-body">
     <div class="header-image-container">
         <span class="airplane-icon">✈️</span>
     </div>
@@ -320,5 +320,38 @@
             <li class="item"><label><input type="checkbox"> Lixo orgânico fora de casa</label></li>
         </ul>
     </div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            checkboxes.forEach(checkbox => {
+                // É crucial que cada checkbox tenha um ID único para que o localStorage funcione corretamente.
+                // Se um checkbox não tiver ID, ele será ignorado pelo salvamento de estado.
+                if (!checkbox.id) {
+                    console.warn('Checkbox sem ID encontrado. O estado deste checkbox não será salvo.', checkbox);
+                    // Opcional: gerar um ID único se não houver, mas é melhor que o desenvolvedor forneça.
+                    // checkbox.id = 'generated-id-' + Math.random().toString(36).substr(2, 9);
+                }
+
+                // Carregar estado salvo (se houver)
+                const savedState = localStorage.getItem(checkbox.id);
+                if (savedState === 'checked') {
+                    checkbox.checked = true;
+                    // Certifique-se de que o elemento pai do texto (o label) receba a classe
+                    checkbox.closest('label').classList.add('checked-item');
+                }
+
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.closest('label').classList.add('checked-item');
+                        localStorage.setItem(this.id, 'checked'); // Salvar estado
+                    } else {
+                        this.closest('label').classList.remove('checked-item');
+                        localStorage.removeItem(this.id); // Remover estado salvo
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
