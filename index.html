@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist para Viagem (Nacional)</title>
+    <!-- Tags Open Graph e Twitter Cards para prévia de compartilhamento -->
+    <meta property="og:title" content="Checklist Completo para Viagem Nacional">
+    <meta property="og:description" content="Organize sua viagem nacional sem esquecer de nada! Documentos, bagagem, saúde, eletrônicos e mais.">
+    <meta property="og:image" content="https://geo-fpires.github.io/meu-checklist-de-viagem/preview.png">
+    <meta property="og:url" content="https://geo-fpires.github.io/meu-checklist-de-viagem/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Checklist Completo para Viagem Nacional">
+    <meta name="twitter:description" content="Organize sua viagem nacional sem esquecer de nada! Documentos, bagagem, saúde, eletrônicos e mais.">
+    <meta name="twitter:image" content="https://geo-fpires.github.io/meu-checklist-de-viagem/preview.png">
+
+    <link rel="icon" href="airplane.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .checked-item {
+            text-decoration: line-through;
+            color: #888;
+        }
+        h1, h2, h3, .section-title, .subsection-title {
+            font-family: 'Lora', serif;
+            color: #2c3e50;
+        }
+        .header-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-image: url('viagem.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .airplane-icon {
+            position: absolute;
+            bottom: -80px;
+            left: 80px;
+            font-size: 90px;
+            transform: rotate(0deg);
+            z-index: 1;
+        }
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-top: 0;
+            padding-top: 20px;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .subsection-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            min-height: 20px; /* Garante que a área de drop seja visível mesmo vazia */
+            border: 1px dashed transparent; /* Borda para indicar área de drop */
+            transition: border-color 0.2s ease-in-out;
+        }
+        ul.drag-over { /* Estilo quando um item está sendo arrastado sobre a lista */
+            border-color: #4CAF50;
+            background-color: #e6ffe6;
+        }
+        li {
+            margin-bottom: 8px;
+            padding: 5px 0;
+            cursor: grab; /* Indica que o item pode ser arrastado */
+            background-color: #fdfdfd;
+            border-radius: 4px;
+            transition: background-color 0.2s ease-in-out;
+            display: flex; /* Para alinhar o checkbox, texto e botão de exclusão */
+            align-items: center; /* Alinha verticalmente */
+            justify-content: space-between; /* Espaça o conteúdo */
+        }
+        li:hover {
+            background-color: #f0f0f0;
+        }
+        li.dragging { /* Estilo do item sendo arrastado */
+            opacity: 0.5;
+            border: 1px dashed #333;
+        }
+        input[type="checkbox"] {
+            /* NOVO: Esconde o checkbox nativo */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s, border-color 0.2s;
+            flex-shrink: 0; /* Impede que o checkbox encolha */
+        }
+        input[type="checkbox"]:checked {
+            background-color: #4CAF50; /* Cor de fundo quando marcado */
+            border-color: #4CAF50;
+        }
+        input[type="checkbox"]:checked::before {
+            /* NOVO: Estilo do "tick" (sinal de visto) */
+            content: '';
+            display: block;
+            width: 6px;
+            height: 12px;
+            border: solid white; /* Cor do tick */
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 2px;
+            left: 6px;
+        }
+        .item {
+            margin-left: 40px;
+        }
+        .sub-item {
+            margin-left: 60px;
+        }
+
+        /* NOVO: Estilos para a seção de adicionar item em cada subseção */
+        .add-item-form {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            margin-left: 40px; /* Alinha com os itens */
+            align-items: center;
+        }
+        .add-item-form input[type="text"] {
+            flex-grow: 1; /* Ocupa o espaço disponível */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Lora', serif;
+            font-size: 0.9em;
+        }
+        .add-item-form button {
+            padding: 8px 12px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Lora', serif;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .add-item-form button:hover {
+            background-color: #34495e;
+        }
+
+        /* NOVO: Estilos para o botão de exclusão */
+        .delete-item-button {
+            background-color: #e74c3c; /* Vermelho */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 3px 8px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            line-height: 1; /* Ajusta a altura da linha para o texto 'X' */
+            float: right; /* Alinha o botão à direita */
+            opacity: 0.7; /* Mais discreto */
+            transition: opacity 0.2s, background-color 0.2s;
+        }
+
+        .delete-item-button:hover {
+            opacity: 1;
+            background-color: #c0392b; /* Vermelho mais escuro ao passar o mouse */
+        }
+
+        /* Ajuste para o label para que o botão de exclusão não o sobreponha */
+        li label {
+            display: flex; /* Usa flexbox para alinhar checkbox e texto */
+            align-items: center;
+            flex-grow: 1; /* Permite que o label ocupe o espaço restante */
+            padding-right: 10px; /* Pequeno espaço antes do botão de exclusão */
+            cursor: pointer; /* Indica que o label é clicável */
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            .header-image-container {
+                height: 180px;
+            }
+            .airplane-icon {
+                bottom: -60px;
+                left: 40px;
+                font-size: 70px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+            .subsection-title {
+                font-size: 1.1em;
+                margin-left: 10px;
+            }
+            .item {
+                margin-left: 20px;
+            }
+            .sub-item {
+                margin-left: 30px;
+            }
+            .add-item-form {
+                margin-left: 20px;
+                flex-direction: column; /* Empilha input e botão em telas pequenas */
+                align-items: stretch;
+            }
+            .add-item-form input[type="text"],
+            .add-item-form button {
+                width: 100%; /* Ocupa a largura total */
+                box-sizing: border-box; /* Inclui padding e borda na largura */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-image-container">
+        <div class="airplane-icon">✈️</div>
+    </div>
+    <div class="content-wrapper">
+        <h1>Checklist para Viagem Nacional</h1>
+
+        <div class="section">
+            <h2 class="section-title">1. Antes da viagem</h2>
+            <h3 class="subsection-title">1.1 Documentos e reservas</h3>
+            <ul id="section-1-1-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-1-1-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">1.2 Planejamento básico</h3>
+            <ul id="section-1-2-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-1-2-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">1.3 Dinheiro</h3>
+            <ul id="section-1-3-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-1-3-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">1.4 Outros</h3>
+            <ul id="section-1-4-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-1-4-ul">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">2. Organização digital</h2>
+            <h3 class="subsection-title">2.1 Celular</h3>
+            <ul id="section-2-1-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-2-1-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">2.2 Outros</h3>
+            <ul id="section-2-2-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-2-2-ul">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">3. Saúde e remédios</h2>
+            <h3 class="subsection-title">3.1 Remédios</h3>
+            <ul id="section-3-1-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-3-1-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">3.2 Outros</h3>
+            <ul id="section-3-2-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-3-2-ul">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">4. Bagagem</h2>
+            <h3 class="subsection-title">4.1 Necessaire</h3>
+            <ul id="section-4-1-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-1-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">4.2 Roupas</h3>
+            <ul id="section-4-2-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-2-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">4.3 Calçados</h3>
+            <ul id="section-4-3-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-3-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">4.4 Higiene pessoal</h3>
+            <ul id="section-4-4-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-4-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">4.5 Eletrônicos</h3>
+            <ul id="section-4-5-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-5-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">4.6 Outros</h3>
+            <ul id="section-4-6-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-4-6-ul">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">5. Casa antes de sair</h2>
+            <h3 class="subsection-title">5.1 Segurança</h3>
+            <ul id="section-5-1-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-5-1-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">5.2 Organização</h3>
+            <ul id="section-5-2-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-5-2-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">5.3 Recados</h3>
+            <ul id="section-5-3-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-5-3-ul">Adicionar</button>
+            </div>
+
+            <h3 class="subsection-title">5.4 Outros</h3>
+            <ul id="section-5-4-ul">
+            </ul>
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-5-4-ul">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">6. Check final antes de sair</h2>
+            <ul id="section-6-ul">
+            </ul>
+            <!-- NOVO: add-item-form para a seção principal 6 -->
+            <div class="add-item-form">
+                <input type="text" class="new-item-input" placeholder="Adicionar item aqui...">
+                <button class="add-item-button" data-target-ul="section-6-ul">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let draggedItem = null; // Variável global para o item sendo arrastado
+
+        // --- Função para criar um novo item da lista (<li>) ---
+        function createNewListItem(text, parentUl, existingId = null) {
+            const newId = existingId || 'dynamic-item-' + Date.now(); // Usa ID existente ou gera um novo
+
+            const listItem = document.createElement('li');
+            // Determina a classe com base no ID da UL pai para aplicar o recuo correto
+            listItem.className = parentUl.id.includes('sub-ul') ? 'sub-item' : 'item';
+            listItem.draggable = true; // Torna o item arrastável
+            listItem.dataset.itemId = newId; // Armazena o ID no dataset do li
+
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = newId; // O ID do checkbox é o mesmo do li
+
+            const spanText = document.createElement('span');
+            spanText.textContent = ' ' + text; // Adiciona o texto ao span
+
+            // NOVO: Botão de exclusão para o novo item
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'X';
+            deleteButton.className = 'delete-item-button';
+            deleteButton.title = 'Excluir este item';
+
+            deleteButton.addEventListener('click', function(e) {
+                e.stopPropagation(); // Impede que o clique no botão ative o checkbox
+                if (confirm('Tem certeza que deseja excluir este item?')) {
+                    const ulId = listItem.closest('ul').id; // Pega o ID da UL pai
+                    listItem.remove(); // Remove o item do DOM
+
+                    // Remove dados do localStorage
+                    localStorage.removeItem(newId); // Estado do checkbox
+                    localStorage.removeItem('dynamic-item-text-' + newId); // Texto do item dinâmico (se existir)
+                    localStorage.removeItem('dynamic-item-section-' + newId); // Seção do item dinâmico (se existir)
+
+                    saveListOrder(ulId); // Salva a nova ordem da lista
+                }
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(spanText);
+            listItem.appendChild(label);
+            listItem.appendChild(deleteButton); // Adiciona o botão de exclusão ao item
+
+            parentUl.appendChild(listItem); // Adiciona o item à lista
+
+            // Carregar estado salvo para o novo item (se houver)
+            const savedState = localStorage.getItem(newId);
+            if (savedState === 'checked') {
+                checkbox.checked = true;
+                label.classList.add('checked-item');
+            }
+
+            // Adicionar evento de mudança ao checkbox
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    label.classList.add('checked-item');
+                    localStorage.setItem(this.id, 'checked');
+                } else {
+                    label.classList.remove('checked-item');
+                    localStorage.removeItem(this.id);
+                }
+                saveListOrder(parentUl.id); // Salva a ordem da lista após marcar/desmarcar
+            });
+
+            addDragAndDropEvents(listItem); // Adiciona eventos de D&D ao novo item
+
+            return newId; // Retorna o ID do item criado
+        }
+
+        // --- Funções de Drag and Drop ---
+        function addDragAndDropEvents(item) {
+            item.addEventListener('dragstart', function(e) {
+                draggedItem = item;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', item.dataset.itemId); // Passa o ID do item
+                setTimeout(() => {
+                    item.classList.add('dragging');
+                }, 0);
+            });
+
+            item.addEventListener('dragend', function() {
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+            });
+        }
+
+        function addDropZoneEvents(ul) {
+            ul.addEventListener('dragover', function(e) {
+                e.preventDefault(); // Permite o drop
+                if (draggedItem && draggedItem.parentNode !== ul) { // Só adiciona classe se for um item diferente e de outra lista
+                    ul.classList.add('drag-over');
+                }
+            });
+
+            ul.addEventListener('dragleave', function() {
+                ul.classList.remove('drag-over');
+            });
+
+            ul.addEventListener('drop', function(e) {
+                e.preventDefault();
+                ul.classList.remove('drag-over');
+
+                if (draggedItem && draggedItem.parentNode !== ul) {
+                    const oldParentUlId = draggedItem.parentNode.id; // ID da UL de origem
+                    ul.appendChild(draggedItem); // Move o item para a nova UL
+
+                    // Atualiza o localStorage para o item dinâmico
+                    if (draggedItem.dataset.itemId.startsWith('dynamic-item-')) {
+                        localStorage.setItem('dynamic-item-section-' + draggedItem.dataset.itemId, ul.id);
+                    }
+
+                    // Salva a nova ordem para a UL de origem e a UL de destino
+                    saveListOrder(oldParentUlId);
+                    saveListOrder(ul.id);
+                }
+            });
+        }
+
+        // --- Funções para salvar e carregar a ordem dos itens dentro de cada UL ---
+        function saveListOrder(ulId) {
+            const ul = document.getElementById(ulId);
+            if (!ul) return;
+
+            const itemIds = Array.from(ul.children)
+                                 .filter(li => li.dataset.itemId) // Filtra apenas LIs que são itens
+                                 .map(li => li.dataset.itemId);
+            localStorage.setItem('list-order-' + ulId, JSON.stringify(itemIds));
+        }
+
+        function loadListOrder(ulId) {
+            const ul = document.getElementById(ulId);
+            if (!ul) return;
+
+            const savedOrder = localStorage.getItem('list-order-' + ulId);
+            if (savedOrder) {
+                const itemIds = JSON.parse(savedOrder);
+                const existingItems = new Map(); // Mapa para itens já presentes no DOM
+                Array.from(ul.children)
+                     .filter(li => li.dataset.itemId) // Filtra apenas LIs que são itens
+                     .forEach(li => {
+                         existingItems.set(li.dataset.itemId, li);
+                     });
+
+                // Reorganiza os itens
+                itemIds.forEach(id => {
+                    if (existingItems.has(id)) {
+                        ul.appendChild(existingItems.get(id));
+                    }
+                });
+            }
+        }
+
+        // --- Inicialização ---
+        // 1. Configura checkboxes pré-definidos e adiciona eventos de D&D e exclusão
+        const allListItems = document.querySelectorAll('li.item, li.sub-item');
+        allListItems.forEach(listItem => {
+            const checkbox = listItem.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                if (!checkbox.id) {
+                    checkbox.id = 'generated-id-' + Math.random().toString(36).substr(2, 9);
+                    console.warn('Checkbox sem ID encontrado. Gerado ID: ' + checkbox.id, checkbox);
+                }
+                listItem.dataset.itemId = checkbox.id; // Garante que o li tenha o data-item-id
+
+                // NOVO: Adiciona o botão de exclusão aos itens pré-definidos
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'X';
+                deleteButton.className = 'delete-item-button';
+                deleteButton.title = 'Excluir este item';
+
+                deleteButton.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Impede que o clique no botão ative o checkbox
+                    if (confirm('Tem certeza que deseja excluir este item?')) {
+                        const ulId = listItem.closest('ul').id; // Pega o ID da UL pai
+                        listItem.remove(); // Remove o item do DOM
+
+                        // Remove dados do localStorage
+                        localStorage.removeItem(checkbox.id); // Estado do checkbox
+                        localStorage.removeItem('dynamic-item-text-' + checkbox.id); // Texto do item dinâmico (se existir)
+                        localStorage.removeItem('dynamic-item-section-' + checkbox.id); // Seção do item dinâmico (se existir)
+
+                        saveListOrder(ulId); // Salva a nova ordem da lista
+                    }
+                });
+                listItem.appendChild(deleteButton); // Adiciona o botão ao item
+
+                // Carrega estado salvo do checkbox
+                const savedState = localStorage.getItem(checkbox.id);
+                if (savedState === 'checked') {
+                    checkbox.checked = true;
+                    checkbox.closest('label').classList.add('checked-item');
+                }
+                // Adiciona evento de mudança ao checkbox
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.closest('label').classList.add('checked-item');
+                        localStorage.setItem(this.id, 'checked');
+                    } else {
+                        this.closest('label').classList.remove('checked-item');
+                        localStorage.removeItem(this.id);
+                    }
+                    saveListOrder(this.closest('ul').id);
+                });
+            }
+            addDragAndDropEvents(listItem); // Adiciona eventos de D&D a todos os itens
+        });
+
+        // 2. Configura as ULs como zonas de drop e carrega a ordem
+        const allUls = document.querySelectorAll('ul[id]');
+        allUls.forEach(ul => {
+            addDropZoneEvents(ul);
+            loadListOrder(ul.id); // Carrega a ordem inicial de cada lista
+        });
+
+        // 3. Configura os botões de adicionar item
+        const addItemForms = document.querySelectorAll('.add-item-form');
+        addItemForms.forEach(form => {
+            const inputField = form.querySelector('input[type="text"]');
+            const addButton = form.querySelector('.add-item-button');
+            const targetUlId = addButton.dataset.targetUl;
+
+            addButton.addEventListener('click', function() {
+                const itemText = inputField.value.trim();
+                if (itemText === '') {
+                    alert('Por favor, digite o texto do item.');
+                    return;
+                }
+
+                const targetUl = document.getElementById(targetUlId);
+                if (targetUl) {
+                    const newId = createNewListItem(itemText, targetUl);
+                    // Salva o texto do item dinâmico e a UL onde ele foi adicionado
+                    localStorage.setItem('dynamic-item-text-' + newId, itemText);
+                    localStorage.setItem('dynamic-item-section-' + newId, targetUlId);
+                    saveListOrder(targetUlId); // Salva a ordem da lista após adicionar um novo item
+                    inputField.value = ''; // Limpa o campo de entrada
+                } else {
+                    console.error('Nenhuma lista com ID "' + targetUlId + '" encontrada para adicionar o item.');
+                }
+            });
+
+            inputField.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    addButton.click();
+                }
+            });
+        });
+
+        // 4. Carrega itens dinâmicos salvos no localStorage
+        // Este loop agora apenas cria os itens que foram adicionados dinamicamente e não são pré-definidos
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith('dynamic-item-text-dynamic-item-')) {
+                const itemId = key.replace('dynamic-item-text-', '');
+                const itemText = localStorage.getItem(key);
+                const itemSectionId = localStorage.getItem('dynamic-item-section-' + itemId);
+
+                if (itemText && itemSectionId) {
+                    const targetUl = document.getElementById(itemSectionId);
+                    // Verifica se o item já existe no DOM (pode ter sido recriado por loadListOrder)
+                    // e se não é um item pré-definido que foi salvo como dinâmico por engano
+                    if (targetUl && !document.getElementById(itemId) && !document.querySelector(`[data-item-id="${itemId}"]`)) {
+                        createNewListItem(itemText, targetUl, itemId);
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
